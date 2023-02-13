@@ -1,0 +1,24 @@
+{
+  "name": "social-nework-api-nosql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Barrerse/social-nework-API-NOSQL.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Barrerse/social-nework-API-NOSQL/issues"
+  },
+  "homepage": "https://github.com/Barrerse/social-nework-API-NOSQL#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^6.9.1"
+  }
+}
