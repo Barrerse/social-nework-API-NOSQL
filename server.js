@@ -1,19 +1,28 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 const connectDB = require('./config/connection');
 
 const app = express();
-
 const PORT = process.env.PORT || 3000;
 
-// Connect to MongoDB database
+// Connect to MongoDB
 connectDB();
 
-// Parse incoming JSON data
-app.use(bodyParser.json());
+// Set up Express.js middleware
+// ...
 
-// Define routes here
+// Test the database connection
+app.get('/', (req, res) => {
+  if (mongoose.connection.readyState === 1) {
+    res.send('Connected to the database!');
+  } else {
+    res.send('Not connected to the database!');
+  }
+});
 
+// Set up routes
+// ...
+
+// Start the server
 app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}`);
+  console.log(`Server started on port ${PORT}`);
 });

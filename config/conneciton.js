@@ -1,16 +1,17 @@
 const mongoose = require('mongoose');
+const { MONGO_URI } = require('./default.json');
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect('mongodb://localhost/social-network-api', {
+    const conn = await mongoose.connect(MONGO_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
-      useCreateIndex: true,
-      useFindAndModify: false
+      useFindAndModify: false,
+      useCreateIndex: true
     });
-    console.log(`MongoDB connected: ${conn.connection.host}`);
+    console.log(`Connected to MongoDB: ${conn.connection.host}`);
   } catch (err) {
-    console.error(err.message);
+    console.error(err);
     process.exit(1);
   }
 };
