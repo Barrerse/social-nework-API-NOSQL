@@ -16,10 +16,10 @@ const UserSchema = new Schema(
       match: [/.+@.+\..+/],
     },
 
-    Posts: [
+    thoughts: [
       {
         type: Schema.Types.ObjectId,
-        ref: "Post",
+        ref: "Thought",
       },
     ],
 

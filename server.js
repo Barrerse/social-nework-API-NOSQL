@@ -1,28 +1,16 @@
-const express = require('express');
-const connectDB = require('./config/connection');
+const express = require("express");
+const db = require("./config/connection.js");
+const routes = require("./routes");
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3001;
 
-// Connect to MongoDB
-connectDB();
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use(routes);
 
-// Set up Express.js middleware
-// ...
-
-// Test the database connection
-app.get('/', (req, res) => {
-  if (mongoose.connection.readyState === 1) {
-    res.send('Connected to the database!');
-  } else {
-    res.send('Not connected to the database!');
-  }
-});
-
-// Set up routes
-// ...
-
-// Start the server
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
+db.once("open", () => {
+  app.listen(PORT, () => {
+    console.log(`API server running on port ${PORT}!`);
+  });
 });
