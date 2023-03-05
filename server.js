@@ -1,27 +1,19 @@
 const express = require('express');
-const db = require('./config/connection');
-// Require model
-const { Book } = require('./models');
+const bodyParser = require('body-parser');
+const connectDB = require('./config/connection');
 
-const PORT = process.env.PORT || 3001;
 const app = express();
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
+const PORT = process.env.PORT || 3000;
 
-app.get('/all-books', (req, res) => {
-  // Using model in route
-  Book.find({}, (err, result) => {
-    if (err) {
-      res.status(500).send({ message: 'Internal Server Error' });
-    } else {
-      res.status(200).json(result);
-    }
-  });
-});
+// Connect to MongoDB database
+connectDB();
 
-db.once('open', () => {
-  app.listen(PORT, () => {
-    console.log(`API server running on port ${PORT}!`);
-  });
+// Parse incoming JSON data
+app.use(bodyParser.json());
+
+// Define routes here
+
+app.listen(PORT, () => {
+  console.log(`Server listening on port ${PORT}`);
 });
