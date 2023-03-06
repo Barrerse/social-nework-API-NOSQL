@@ -1,14 +1,15 @@
 const mongoose = require('mongoose');
+const connectionStringURI = `mongodb://localhost:27017/social-network-API`
 
-// Set up Mongoose connection
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/social-network-API';
-mongoose.connect(MONGODB_URI, {
+mongoose.connect(connectionStringURI, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
-  useCreateIndex: true
 });
 
 // Log MongoDB queries being executed
+mongoose.connection.once("open",()=>{
+  console.log("Connected to MongoDB!!!");
+})
 mongoose.set('debug', true);
 
 // Export the Mongoose connection object
