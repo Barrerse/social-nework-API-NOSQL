@@ -16,11 +16,7 @@ To install this project, follow these steps:
 
 `npm install`
 
-1.  Seed the database by running the following command:
 
-
-
-`npm run seed`
 
 Usage
 -----
