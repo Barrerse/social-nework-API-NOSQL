@@ -37,11 +37,11 @@ const ReactionSchema = new Schema(
   }
 );
 
-const ThoughtSchema = new Schema(
+const PostSchema = new Schema(
   {
-    thoughtText: {
+    PostText: {
       type: String,
-      required: "Thought is Required",
+      required: "Post is Required",
       minlength: 1,
       maxlength: 280,
     },
@@ -70,10 +70,10 @@ const ThoughtSchema = new Schema(
   }
 );
 
-ThoughtSchema.virtual("reactionCount").get(function () {
+PostSchema.virtual("reactionCount").get(function () {
   return this.reactions.length;
 });
 
-const Thought = model("Thought", ThoughtSchema);
+const Post = model("Post", PostSchema);
 
-module.exports = Thought;
+module.exports = Post;
